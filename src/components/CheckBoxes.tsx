@@ -1,18 +1,10 @@
 import React from "react";
-import { useState } from "react";
 
 interface Props {
   onChange: () => void;
   isCheckbox: boolean;
 }
 const CheckBoxes = ({ isCheckbox, onChange }: Props) => {
-  //const [isDisabled, setIsDisabled] = useState(true);
-
-  // const handleChange = () => {
-  //   // протянуть Из инпута
-  //   setIsDisabled(false);
-  // };
-
   return (
     <>
       <div className="input-group-text">
