@@ -1,6 +1,6 @@
 import Card from "./components/Card";
 import Button from "./components/Button";
-import CheckBoxes from "./components/CheckBoxes";
+import CheckBox from "./components/CheckBox";
 import Input from "./components/Input";
 import ListGroup from "./components/ListGroup";
 import { SetStateAction, useState } from "react";
@@ -12,26 +12,26 @@ const handleSelectItem = (items: string) => {
 };
 
 function App() {
-  const [isDisabled, setIsDisabled] = useState(true);
-  const [isShown, setIsShown] = useState(false);
+  const [isDisabledButton, setIsDisabledButton] = useState(true);
+  const [isShownCard, setIsShownCard] = useState(false);
   const [value, setValue] = useState("");
   const [tempValue, setTempValue] = useState("");
-  const [isCheckbox, setIsCheckbox] = useState(true);
+  const [isDisabledCheckbox, setIsDisabledCheckbox] = useState(true);
   const handleChange = () => {
-    setIsDisabled((current) => !current);
+    setIsDisabledButton((current) => !current);
   };
 
   const handleClick = () => {
     setValue(tempValue);
-    if (!isShown) setIsShown((current) => !current);
+    if (!isShownCard) setIsShownCard(true);
   };
   const handleClose = () => {
-    setIsShown((current) => !current);
+    setIsShownCard(false);
   };
 
   const handleNewValue = (val: string) => {
     console.log("Main " + val);
-    if (tempValue == "") setIsCheckbox(false);
+    if (!tempValue) setIsDisabledCheckbox(false);
     setTempValue(val);
   };
 
@@ -43,14 +43,14 @@ function App() {
         onSelectItem={handleSelectItem}
       />
       <div className="input-group mb-3">
-        <CheckBoxes isCheckbox={isCheckbox} onChange={handleChange} />
-        <Input onChange={handleNewValue}></Input>
+        <CheckBox disabled={isDisabledCheckbox} onChange={handleChange} />
+        <Input onChange={handleNewValue} value={tempValue}></Input>
       </div>
-      <Button isDisabled={isDisabled} onClick={handleClick}>
+      <Button isDisabled={isDisabledButton} onClick={handleClick}>
         Send
       </Button>
       <div>
-        {isShown && (
+        {isShownCard && (
           <Card closeClick={handleClose}>
             <strong>Holy guacamole! </strong> {value}
           </Card>

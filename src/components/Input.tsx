@@ -2,24 +2,20 @@ import React from "react";
 
 interface Props {
   onChange: (val: string) => void;
+  value: string;
 }
-const Input = ({ onChange }: Props) => {
-  const handleInputChange = (e: {
-    [x: string]: any;
-    target: { value: string };
-  }) => {
+const Input = ({ onChange, value }: Props) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
   };
 
   return (
-    <>
-      <input
-        type="text"
-        className="form-control"
-        aria-label="Text input with checkbox"
-        onChange={handleInputChange}
-      />
-    </>
+    <input
+      type="text"
+      className="form-control"
+      onChange={handleInputChange}
+      value={value}
+    />
   );
 };
 export default Input;
