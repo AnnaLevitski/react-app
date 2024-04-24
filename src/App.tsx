@@ -5,20 +5,20 @@ import Input from "./components/Input";
 import ListGroup from "./components/ListGroup";
 import { SetStateAction, useState } from "react";
 
-const items = ["Neque", "Porro quisquam", "Est qui ", "Dolorem"];
-
-const handleSelectItem = (items: string) => {
-  console.log(items);
-};
+const items = ["Home", "Profile", "Messages", "Settings"];
 
 function App() {
   const [isDisabledButton, setIsDisabledButton] = useState(true);
   const [isShownCard, setIsShownCard] = useState(false);
   const [value, setValue] = useState("");
+  const [mainHeading, setMainHeading] = useState("Home");
   const [tempValue, setTempValue] = useState("");
   const [isDisabledCheckbox, setIsDisabledCheckbox] = useState(true);
   const handleChange = () => {
     setIsDisabledButton((current) => !current);
+  };
+  const handleSelectItem = (item: string) => {
+    setMainHeading(item);
   };
 
   const handleClick = () => {
@@ -38,7 +38,7 @@ function App() {
   return (
     <div>
       <ListGroup
-        heading="Lorem Ipsum"
+        heading={mainHeading}
         items={items}
         onSelectItem={handleSelectItem}
       />
