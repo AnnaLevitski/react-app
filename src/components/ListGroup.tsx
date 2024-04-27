@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
 interface Props {
+  children: ReactNode;
   heading: string;
   items: string[];
   onSelectItem: (item: string) => void;
 }
 
-function ListGroup({ items, heading, onSelectItem }: Props) {
+function ListGroup({ children, items, heading, onSelectItem }: Props) {
   const message = items.length === 0 && <p>No items found</p>;
 
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -41,12 +42,7 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
             ))}
           </div>
         </div>
-        <div className="col-8">
-          <p>
-            Some placeholder content in a paragraph relating to "
-            {items[selectedIndex]}".
-          </p>
-        </div>
+        <div className="col-8">{children}</div>
       </div>
     </>
   );
