@@ -4,7 +4,7 @@ interface Props {
   onChange: () => void;
   disabled: boolean;
 }
-const CheckBoxe = ({ disabled, onChange }: Props) => {
+const CheckBox = ({ disabled, onChange }: Props) => {
   return (
     <div className="input-group-text">
       <input
@@ -18,4 +18,5 @@ const CheckBoxe = ({ disabled, onChange }: Props) => {
     </div>
   );
 };
-export default CheckBoxe;
+
+export default CheckBox;
