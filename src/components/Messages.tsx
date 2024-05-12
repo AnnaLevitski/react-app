@@ -10,11 +10,9 @@ type ParsedType = {
 };
 type Message = { email: string; body: string }[];
 
-interface Props {}
-
 async function randomDelay(d: any): Promise<TimerHandler> {
   return new Promise((r: Function) =>
-    setTimeout(() => r(d), randomInt(1000, 12000))
+    setTimeout(() => r(d), randomInt(0, 4500))
   );
 }
 
@@ -53,5 +51,5 @@ const Messages = () => {
     </>
   );
 };
-
+export { randomInt };
 export default Messages;

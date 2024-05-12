@@ -25,12 +25,12 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
               href={"#list-" + { item }.item}
               role="tab"
               aria-controls="list-home"
+              key={item}
               className={
                 selectedIndex === index
                   ? "list-group-item list-group-item-action active"
                   : "list-group-item list-group-item-action"
               }
-              key={item}
               onClick={() => {
                 setSelectedIndex(index);
                 onSelectItem(item);

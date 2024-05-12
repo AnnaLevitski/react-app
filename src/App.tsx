@@ -7,7 +7,6 @@ import ListGroup from "./components/ListGroup";
 import Layout from "./components/Layout";
 import Spinner from "./components/Spinner";
 import Placeholder from "./components/Placeholder";
-import React from "react";
 
 const Messages = lazy(() => import("./components/Messages"));
 
@@ -21,10 +20,10 @@ function App() {
   const [mainHeading, setMainHeading] = useState("Home");
   const [tempValue, setTempValue] = useState("");
   const [isDisabledCheckbox, setIsDisabledCheckbox] = useState(true);
-  const handleChange = () => {
+  const handleChange = (): void => {
     setIsDisabledButton((current) => !current);
   };
-  const handleSelectItem = async (item: string) => {
+  const handleSelectItem = async (item: string): Promise<void> => {
     setMainHeading(item);
     if (item != "Messages") {
       setIsShownMessages(false);
@@ -33,15 +32,15 @@ function App() {
     }
   };
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     setValue(tempValue);
     if (!isShownCard) setIsShownCard(true);
   };
-  const handleClose = () => {
+  const handleClose = (): void => {
     setIsShownCard(false);
   };
 
-  const handleNewValue = (val: string) => {
+  const handleNewValue = (val: string): void => {
     if (!tempValue) setIsDisabledCheckbox(false);
     setTempValue(val);
   };
@@ -79,6 +78,3 @@ function App() {
   );
 }
 export default App;
-function updateState(arg0: {}): any {
-  throw new Error("Function not implemented.");
-}
